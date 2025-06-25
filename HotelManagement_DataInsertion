@@ -1,0 +1,631 @@
+--INSERT:
+
+INSERT INTO Discounts (roomtype, offered, startdate, enddate) VALUES
+('Deluxe', 15, '2025-04-01', '2025-04-30'),
+('Suite', 20, '2025-05-01', '2025-05-15'),
+('Standard', 10, '2025-04-10', '2025-04-30'),
+('Executive', 25, '2025-04-20', '2025-05-10');
+
+INSERT INTO Department VALUES 
+(111, 'HouseCleaning', 11109, 'Mithun Das','M','2025-02-03'),
+(112, 'Gym', 11207,'Salman Khan','M', '2024-02-29'), 
+(113, 'Spa', 11306,'Harshil Roshan','M', '2024-10-09'), 
+(114, 'Maintenance', 11415, 'Sarthak Goswami','M','2024-08-19'), 
+(115, 'Laundry', 11503, 'Praveen Jain','M', '2024-06-12'),
+(116, 'Food Delivery', 11604,'Samay Raina','M', '2024-12-08'),
+(117, 'Restaurant', 11714,'Sanjiv Kapoor','M', '2025-01-01');
+
+INSERT INTO Rooms (Roomno, rate_night, occupancy, occupied, Roomtype, "floor") VALUES
+(101, 5000, 2, 1, 'Deluxe', 1),
+(102, 8000, 4, 3, 'Suite', 1),
+(103, 3000, 2, 1, 'Standard', 1),
+(104, 7000, 3, 2, 'Executive', 1),
+(105, 3000, 3, 0, 'Standard', 1),
+(201, 5000, 2, 1, 'Deluxe', 2),
+(202, 3000, 2, 1, 'Standard', 2),
+(203, 8000, 4, 0, 'Suite', 2),
+(204, 7000, 3, 1, 'Executive', 2),
+(205, 3000, 3, 3, 'Standard', 2),
+(301, 3000, 2, 1, 'Standard', 3),
+(302, 5000, 2, 2, 'Deluxe', 3),
+(303, 8000, 4, 3, 'Suite', 3),
+(304, 7000, 3, 2, 'Executive', 3),
+(305, 3000, 3, 3, 'Standard', 3),
+(401, 5000, 2, 2, 'Deluxe', 4),
+(402, 3000, 2, 1, 'Standard', 4),
+(403, 8000, 4, 3, 'Suite', 4),
+(404, 7000, 3, 1, 'Executive', 4),
+(405, 3000, 3, 3, 'Standard', 4),
+(501, 5000, 2, 2, 'Deluxe', 5),
+(502, 3000, 2, 0, 'Standard', 5),
+(503, 8000, 4, 2, 'Suite', 5),
+(504, 7000, 3, 1, 'Executive', 5),
+(505, 3000, 3, 3, 'Standard', 5);
+
+INSERT INTO Resident (RoomID, "Name", aadharNo, PassPortID, PaymentID, PhoneNumber, PlaceOfResidence, BookingDate, PaymentMethod, CheckinDate, CheckoutDate) VALUES
+(101, 'Arjun Mehta', 123456789012, 'P1234567', 'PAY101', 9876543210, 'Mumbai', '2025-04-01', 'Card', '2025-04-05', '2025-04-10'),
+(102, 'Neha Singh', 234567890123, 'P2345678', 'PAY102', 8765432109, 'Delhi', '2025-04-02', 'UPI', '2025-04-06', '2025-04-09'),
+(103, 'Rahul Verma', 345678901234, 'P3456789', 'PAY103', 7654321098, 'Bangalore', '2025-04-03', 'Cash', '2025-04-07', '2025-04-11'),
+(104, 'Priya Das', 456789012345, 'P4567890', 'PAY104', 6543210987, 'Kolkata', '2025-04-04', 'Card', '2025-04-08', '2025-04-12'),
+(201, 'Karan Malhotra', 567890123456, 'P5678901', 'PAY201', 5432109876, 'Pune', '2025-04-05', 'Card', '2025-04-09', '2025-04-13'),
+(202, 'Sneha Roy', 678901234567, 'P6789012', 'PAY202', 4321098765, 'Chennai', '2025-04-06', 'UPI', '2025-04-10', '2025-04-14'),
+(204, 'Anjali Menon', 890123456789, 'P8901234', 'PAY204', 2109876543, 'Hyderabad', '2025-04-08', 'Card', '2025-04-12', '2025-04-16'),
+(205, 'Rajeev Iyer', 998877665544, 'P2222333', 'PAY205', 9988776655, 'Indore', '2025-04-09', 'UPI', '2025-04-13', '2025-04-17'),
+(301, 'Meera Nair', 111122223333, 'P3333444', 'PAY301', 9001122334, 'Nagpur', '2025-04-10', 'Card', '2025-04-14', '2025-04-18'),
+(302, 'Dev Patel', 222233334444, 'P4444555', 'PAY302', 9112233445, 'Surat', '2025-04-11', 'Cash', '2025-04-15', '2025-04-19'),
+(303, 'Riya Sharma', 901234567890, 'P9012345', 'PAY303', 1234567890, 'Goa', '2025-04-09', 'Card', '2025-04-10', '2025-04-14'),
+(304, 'Nilesh Pandey', 333344445555, 'P5555666', 'PAY304', 9223344556, 'Bhopal', '2025-04-12', 'UPI', '2025-04-16', '2025-04-20'),
+(305, 'Divya Kapoor', 444455556666, 'P6666777', 'PAY305', 9334455667, 'Jaipur', '2025-04-13', 'Card', '2025-04-17', '2025-04-21'),
+(401, 'Raman Joshi', 555566667777, 'P7777888', 'PAY401', 9445566778, 'Shimla', '2025-04-14', 'Card', '2025-04-18', '2025-04-22'),
+(402, 'Pooja Raut', 666677778888, 'P8888999', 'PAY402', 9556677889, 'Raipur', '2025-04-15', 'Cash', '2025-04-19', '2025-04-23'),
+(403, 'Ashok Pillai', 777788889999, 'P9999000', 'PAY403', 9667788990, 'Ranchi', '2025-04-16', 'UPI', '2025-04-20', '2025-04-24'),
+(404, 'Ishita Desai', 888899990000, 'P0000111', 'PAY404', 9778899001, 'Guwahati', '2025-04-17', 'Card', '2025-04-21', '2025-04-25'),
+(405, 'Tarun Gill', 999900001111, 'P1111223', 'PAY405', 9889900112, 'Dehradun', '2025-04-18', 'Cash', '2025-04-22', '2025-04-26'),
+(501, 'Ayesha Sheikh', 111100002222, 'P2222444', 'PAY501', 9990001122, 'Agra', '2025-04-19', 'Card', '2025-04-23', '2025-04-27'),
+(503, 'Ritika Jain', 333322224444, 'P4444666', 'PAY503', 9777222334, 'Vadodara', '2025-04-21', 'Card', '2025-04-25', '2025-04-29'),
+(504, 'Manoj Batra', 444433335555, 'P5555777', 'PAY504', 9666333445, 'Mysore', '2025-04-22', 'Cash', '2025-04-26', '2025-04-30'),
+(505, 'Tanvi Bhosale', 555544446666, 'P6666888', 'PAY505', 9555444556, 'Thrissur', '2025-04-23', 'Card', '2025-04-27', '2025-05-01');
+
+INSERT INTO EventDetails (EventName, Date, StartTime, EndTime, Venue)
+VALUES
+  ('Sunset Yoga Session', '2025-05-10', '17:30:00', '18:30:00', 'Garden Area'),
+  ('Poolside Movie Night', '2025-05-12', '20:00:00', '22:00:00', 'Hall B'),
+  ('Kids’ Treasure Hunt', '2025-05-14', '10:00:00', '11:30:00', 'Play Zone'),
+  ('Live Acoustic Evening', '2025-05-15', '19:00:00', '21:00:00', 'Lounge Hall'),
+  ('Spa & Wellness Workshop', '2025-05-18', '09:00:00', '11:00:00', 'Hall A'),
+  ('Stargazing Night', '2025-05-22', '21:00:00', '23:00:00', 'Terrace');
+
+INSERT INTO Registered_In (ROOMID, Event_Name)
+VALUES
+(101, 'Sunset Yoga Session'),
+(102, 'Poolside Movie Night'),
+(103, 'Kids’ Treasure Hunt'),
+(104, 'Live Acoustic Evening'),
+(201, 'Spa & Wellness Workshop'),
+(202, 'Stargazing Night'),
+(202, 'Sunset Yoga Session'),
+(204, 'Sunset Yoga Session'),
+(204, 'Live Acoustic Evening'),
+(204, 'Kids’ Treasure Hunt'),
+(205, 'Spa & Wellness Workshop'),
+(301, 'Sunset Yoga Session'),
+(301, 'Poolside Movie Night'),
+(302, 'Live Acoustic Evening'),
+(302, 'Spa & Wellness Workshop'),
+(303, 'Kids’ Treasure Hunt'),
+(303, 'Sunset Yoga Session'),
+(304, 'Live Acoustic Evening'),
+(304, 'Stargazing Night'),
+(305, 'Poolside Movie Night'),
+(401, 'Kids’ Treasure Hunt'),
+(401, 'Live Acoustic Evening'),
+(402, 'Spa & Wellness Workshop'),
+(403, 'Stargazing Night'),
+(404, 'Poolside Movie Night'),
+(405, 'Sunset Yoga Session'),
+(501, 'Stargazing Night'),
+(501, 'Kids’ Treasure Hunt'),
+(503, 'Poolside Movie Night'),
+(503, 'Live Acoustic Evening'),
+(504, 'Sunset Yoga Session'),
+(505, 'Spa & Wellness Workshop'),
+(505, 'Stargazing Night');
+
+INSERT INTO Employee VALUES
+-- Department 111: HouseCleaning
+(11101, 'Ananya Sharma', 'Yes', 11107, 111, '1990-03-12', 'F', 52000, '09:00:00'),
+(11107, 'Gaurav Iyer', 'Yes', null, 111, '1993-12-11', 'M', 53000, '08:45:00'),
+(11116, 'Lakshya Mehra', 'Yes', 11107, 111, '1993-07-12', 'M', 50000, '09:00:00'),
+(11117, 'Sakshi Joshi', 'Yes', 11107, 111, '1995-04-18', 'F', 48000, '10:00:00'),
+(11118, 'Harleen Kaur', 'Yes', 11107, 111, '1989-06-11', 'F', 54000, '09:50:00'),
+
+-- Department 112: Gym
+(11202, 'Rohan Verma', 'Yes', 11208, 112, '1988-07-19', 'M', 55000, '08:30:00'),
+(11208, 'Ganesh Rao', 'Yes', null, 112, '1986-06-02', 'M', 65000, '08:00:00'),
+(11218, 'Jitesh Nair', 'Yes', 11208, 112, '1990-05-14', 'M', 54000, '08:00:00'),
+(11219, 'Meera Sinha', 'Yes', 11208, 112, '1992-03-10', 'F', 53000, '09:30:00'),
+(11220, 'Devansh Shetty', 'Yes', 11208, 112, '1989-01-09', 'M', 56000, '08:45:00'),
+
+-- Department 113: Spa
+(11303, 'Charvi Patel', 'No', 11309, 113, '1992-04-25', 'F', 48000, '10:00:00'),
+(11309, 'Swati Reddy', 'Yes', null, 113, '1990-08-17', 'F', 59000, '09:30:00'),
+(11320, 'Aaradhya Jain', 'Yes', 11309, 113, '1989-11-03', 'F', 52000, '09:45:00'),
+(11321, 'Karan Malhotra', 'Yes', 11309, 113, '1991-06-17', 'M', 51000, '10:15:00'),
+(11322, 'Sneha Desai', 'Yes', 11309, 113, '1993-09-20', 'F', 50000, '09:10:00'),
+
+-- Department 114: Maintenance
+(11404, 'Vikram Chauhan', 'Yes', NULL, 114, '1987-01-14', 'M', 60000, '09:15:00'),
+(11410, 'Jayant Tiwari', 'No', 11404, 114, '1992-02-20', 'M', 49000, '09:10:00'),
+(11422, 'Rajat Kapoor', 'Yes', 11404, 114, '1980-02-10', 'M', 60000, '08:30:00'),
+(11423, 'Tanishq Mehta', 'Yes', 11404, 114, '2000-03-22', 'M', 47000, '09:20:00'),
+(11424, 'Nikhil Bhatia', 'Yes', 11404, 114, '1985-09-12', 'M', 58000, '09:00:00'),
+
+-- Department 115: Laundry
+(11505, 'Pooja Nambiar', 'Yes', 11511, 115, '1991-09-30', 'F', 51000, '09:45:00'),
+(11511, 'Kavya Pillai', 'Yes', null, 115, '1994-11-09', 'F', 52000, '10:00:00'),
+(11524, 'Mitali Ghosh', 'Yes', 11511, 115, '1993-02-10', 'F', 55000, '08:50:00'),
+(11525, 'Rahul Dubey', 'Yes', 11511, 115, '1992-01-05', 'M', 50000, '10:10:00'),
+(11526, 'Aditya Joshi', 'Yes', 11511, 115, '1992-07-22', 'M', 49000, '09:40:00'),
+
+-- Department 116: Food Delivery
+(11606, 'Farhan Shaikh', 'No', 11612, 116, '1989-05-23', 'M', 47000, '10:30:00'),
+(11612, 'Manav Shankar', 'Yes', null, 116, '1985-10-05', 'M', 56000, '08:20:00'),
+(11626, 'Naveen Tripathi', 'Yes', 11612, 116, '1990-06-15', 'M', 51000, '09:10:00'),
+(11627, 'Esha Kapoor', 'Yes', 11612, 116, '1993-12-01', 'F', 52000, '08:40:00'),
+(11628, 'Ravi Narayan', 'Yes', 11612, 116, '1991-04-28', 'M', 54000, '08:50:00'),
+
+-- Department 117: Restaurant
+(11713, 'Amitabh Sinha', 'Yes', 11714, 117, '1985-10-05', 'M', 56000, '08:20:00'),
+(11714, 'Siddharth Roy', 'Yes', null, 117, '1985-10-05', 'M', 56000, '08:20:00'),
+(11715, 'Parth Khurana', 'No', 11714, 117, '1985-10-05', 'M', 56000, '08:20:00'),
+(11728, 'Yash Thakur', 'Yes', 11714, 117, '1986-10-24', 'M', 58000, '09:00:00'),
+(11729, 'Neha Bansal', 'Yes', 11714, 117, '1987-12-08', 'F', 57000, '09:10:00');
+
+INSERT INTO Work_Desc (emp_id, task, hours_worked) VALUES
+-- Department 111
+(11101, 'Front Desk Management', 8),
+(11107, 'Security Briefing', 8),
+(11116, 'Front Desk Management', 7),
+(11117, 'Room Cleaning', 6),
+(11118, 'Linen Inventory', 5),
+
+-- Department 112
+(11202, 'Inventory Check', 7),
+(11208, 'Maintenance Scheduling', 8),
+(11218, 'Gym Supervision', 7),
+(11219, 'Guest Assistance', 6),
+(11220, 'Inventory Check', 6),
+
+-- Department 113
+(11303, 'Room Service Coordination', 6),
+(11309, 'Guest Feedback Review', 7),
+(11320, 'Spa Preparation', 6),
+(11321, 'Room Service Coordination', 7),
+(11322, 'Inventory Check', 5),
+
+-- Department 114
+(11404, 'Managerial Oversight', 9),
+(11410, 'Transport Coordination', 6),
+(11422, 'Facility Inspection', 8),
+(11423, 'Maintenance Support', 7),
+(11424, 'Security Briefing', 7),
+
+-- Department 115
+(11505, 'Guest Relations', 7),
+(11511, 'Spa Service Oversight', 8),
+(11524, 'Laundry Processing', 7),
+(11525, 'Guest Relations', 6),
+(11526, 'Stocking Supplies', 5),
+
+-- Department 116
+(11606, 'Housekeeping Supervision', 6),
+(11612, 'Catering Supervision', 7),
+(11626, 'Delivery Coordination', 6),
+(11627, 'Guest Orders Fulfillment', 6),
+(11628, 'Housekeeping Supervision', 5),
+
+-- Department 117
+(11713, 'European Food', 5),
+(11714, 'Chinese Food', 6),
+(11715, 'Indian Food', 4),
+(11728, 'Mexican Food', 7),
+(11729, 'Japanese Food', 5);
+
+INSERT INTO WorkingDate (Dates)
+VALUES
+  ('2025-04-01'),
+  ('2025-04-02'),
+  ('2025-04-03'),
+  ('2025-04-04'),
+  ('2025-04-05');
+
+ INSERT INTO new_Attends
+ VALUES
+ (11101, '2025-04-01', TRUE), (11101, '2025-04-02', TRUE), (11101, '2025-04-03', TRUE), (11101, '2025-04-04', TRUE), (11101, '2025-04-05', TRUE),
+ (11107, '2025-04-01', TRUE), (11107, '2025-04-02', TRUE), (11107, '2025-04-03', FALSE), (11107, '2025-04-04', TRUE), (11107, '2025-04-05', TRUE),
+ (11116, '2025-04-01', TRUE), (11116, '2025-04-02', TRUE), (11116, '2025-04-03', TRUE), (11116, '2025-04-04', FALSE), (11116, '2025-04-05', TRUE),
+ (11117, '2025-04-01', TRUE), (11117, '2025-04-02', FALSE), (11117, '2025-04-03', TRUE), (11117, '2025-04-04', TRUE), (11117, '2025-04-05', TRUE),
+ (11118, '2025-04-01', TRUE), (11118, '2025-04-02', TRUE), (11118, '2025-04-03', TRUE), (11118, '2025-04-04', TRUE), (11118, '2025-04-05', TRUE),
+ 
+ -- Department 112
+ (11202, '2025-04-01', TRUE), (11202, '2025-04-02', TRUE), (11202, '2025-04-03', TRUE), (11202, '2025-04-04', TRUE), (11202, '2025-04-05', FALSE),
+ (11208, '2025-04-01', TRUE), (11208, '2025-04-02', TRUE), (11208, '2025-04-03', FALSE), (11208, '2025-04-04', TRUE), (11208, '2025-04-05', TRUE),
+ (11218, '2025-04-01', TRUE), (11218, '2025-04-02', TRUE), (11218, '2025-04-03', TRUE), (11218, '2025-04-04', TRUE), (11218, '2025-04-05', TRUE),
+ (11219, '2025-04-01', TRUE), (11219, '2025-04-02', TRUE), (11219, '2025-04-03', TRUE), (11219, '2025-04-04', FALSE), (11219, '2025-04-05', TRUE),
+ (11220, '2025-04-01', FALSE), (11220, '2025-04-02', TRUE), (11220, '2025-04-03', TRUE), (11220, '2025-04-04', TRUE), (11220, '2025-04-05', TRUE),
+ 
+ -- Department 113
+ (11303, '2025-04-01', FALSE), (11303, '2025-04-02', FALSE), (11303, '2025-04-03', TRUE), (11303, '2025-04-04', TRUE), (11303, '2025-04-05', TRUE),
+ (11309, '2025-04-01', TRUE), (11309, '2025-04-02', TRUE), (11309, '2025-04-03', FALSE), (11309, '2025-04-04', TRUE), (11309, '2025-04-05', TRUE),
+ (11320, '2025-04-01', TRUE), (11320, '2025-04-02', TRUE), (11320, '2025-04-03', TRUE), (11320, '2025-04-04', TRUE), (11320, '2025-04-05', TRUE),
+ (11321, '2025-04-01', TRUE), (11321, '2025-04-02', TRUE), (11321, '2025-04-03', TRUE), (11321, '2025-04-04', FALSE), (11321, '2025-04-05', TRUE),
+ (11322, '2025-04-01', TRUE), (11322, '2025-04-02', FALSE), (11322, '2025-04-03', TRUE), (11322, '2025-04-04', TRUE), (11322, '2025-04-05', TRUE),
+ 
+ -- Department 114
+ (11404, '2025-04-01', TRUE), (11404, '2025-04-02', TRUE), (11404, '2025-04-03', TRUE), (11404, '2025-04-04', FALSE), (11404, '2025-04-05', TRUE),
+ (11410, '2025-04-01', TRUE), (11410, '2025-04-02', TRUE), (11410, '2025-04-03', TRUE), (11410, '2025-04-04', TRUE), (11410, '2025-04-05', TRUE),
+ (11422, '2025-04-01', TRUE), (11422, '2025-04-02', TRUE), (11422, '2025-04-03', TRUE), (11422, '2025-04-04', TRUE), (11422, '2025-04-05', TRUE),
+ (11423, '2025-04-01', FALSE), (11423, '2025-04-02', TRUE), (11423, '2025-04-03', TRUE), (11423, '2025-04-04', TRUE), (11423, '2025-04-05', TRUE),
+ (11424, '2025-04-01', TRUE), (11424, '2025-04-02', FALSE), (11424, '2025-04-03', TRUE), (11424, '2025-04-04', TRUE), (11424, '2025-04-05', TRUE),
+
+ -- Department 115
+(11505, '2025-04-01', TRUE), (11505, '2025-04-02', TRUE), (11505, '2025-04-03', TRUE), (11505, '2025-04-04', TRUE), (11505, '2025-04-05', FALSE),
+(11511, '2025-04-01', TRUE), (11511, '2025-04-02', TRUE), (11511, '2025-04-03', TRUE), (11511, '2025-04-04', TRUE), (11511, '2025-04-05', TRUE),
+(11524, '2025-04-01', TRUE), (11524, '2025-04-02', TRUE), (11524, '2025-04-03', TRUE), (11524, '2025-04-04', TRUE), (11524, '2025-04-05', TRUE),
+(11525, '2025-04-01', TRUE), (11525, '2025-04-02', FALSE), (11525, '2025-04-03', TRUE), (11525, '2025-04-04', TRUE), (11525, '2025-04-05', TRUE),
+(11526, '2025-04-01', TRUE), (11526, '2025-04-02', TRUE), (11526, '2025-04-03', TRUE), (11526, '2025-04-04', TRUE), (11526, '2025-04-05', TRUE),
+
+-- Department 116
+(11606, '2025-04-01', TRUE), (11606, '2025-04-02', TRUE), (11606, '2025-04-03', FALSE), (11606, '2025-04-04', TRUE), (11606, '2025-04-05', TRUE),
+(11612, '2025-04-01', TRUE), (11612, '2025-04-02', TRUE), (11612, '2025-04-03', TRUE), (11612, '2025-04-04', TRUE), (11612, '2025-04-05', TRUE),
+(11626, '2025-04-01', TRUE), (11626, '2025-04-02', TRUE), (11626, '2025-04-03', TRUE), (11626, '2025-04-04', TRUE), (11626, '2025-04-05', TRUE),
+(11627, '2025-04-01', TRUE), (11627, '2025-04-02', FALSE), (11627, '2025-04-03', TRUE), (11627, '2025-04-04', TRUE), (11627, '2025-04-05', TRUE),
+(11628, '2025-04-01', TRUE), (11628, '2025-04-02', TRUE), (11628, '2025-04-03', TRUE), (11628, '2025-04-04', TRUE), (11628, '2025-04-05', TRUE),
+
+-- Department 117
+(11713, '2025-04-01', TRUE), (11713, '2025-04-02', TRUE), (11713, '2025-04-03', TRUE), (11713, '2025-04-04', TRUE), (11713, '2025-04-05', TRUE),
+(11714, '2025-04-01', TRUE), (11714, '2025-04-02', TRUE), (11714, '2025-04-03', TRUE), (11714, '2025-04-04', TRUE), (11714, '2025-04-05', TRUE),
+(11715, '2025-04-01', FALSE), (11715, '2025-04-02', TRUE), (11715, '2025-04-03', TRUE), (11715, '2025-04-04', TRUE), (11715, '2025-04-05', TRUE),
+(11728, '2025-04-01', TRUE), (11728, '2025-04-02', TRUE), (11728, '2025-04-03', TRUE), (11728, '2025-04-04', TRUE), (11728, '2025-04-05', TRUE),
+(11729, '2025-04-01', TRUE), (11729, '2025-04-02', TRUE), (11729, '2025-04-03', TRUE), (11729, '2025-04-04', FALSE), (11729, '2025-04-05', TRUE);
+
+INSERT INTO Service_Requested
+VALUES
+(101,111,100,'06/04/2025'),
+(102,112,200,'08/04/2025'),
+(103,113,250,'07/04/2025'),
+(104,114,300,'09/04/2025'),
+(201,111,100,'11/04/2025'),
+(202,113,1000,'11/04/2025'),
+(204,114,100,'13/04/2025'),
+(205,115,150,'14/04/2025'),
+(301,116,120,'15/04/2025'),
+(302,116,160,'15/04/2025'),
+(303,113,150,'12/04/2025'),
+(304,114,100,'18/04/2025'),
+(305,113,1200,'18/04/2025'),
+(401,111,100,'18/04/2025'),
+(402,113,500,'21/04/2025'),
+(403,113,1000,'21/04/2025'),
+(404,114,50,'21/04/2025'),
+(405,114,50,'24/04/2025'),
+(501,116,100,'26/04/2025'),
+(503,112,800,'26/04/2025'),
+(504,113,200,'27/04/2025'),
+(505,114,10,'27/04/2025'),
+(101,116,1300,'08/04/2025'),
+(102,113,200,'08/04/2025'),
+(204,116,600,'14/04/2025'),
+(304,116,800,'17/04/2025'),
+(201,116,140,'10/04/2025'),
+(402,111,700,'21/04/2025'),
+(503,113,650,'27/04/2025'),
+(504,114,120,'27/04/2025'),
+(104,111,100,'11/04/2025'),
+(102,115,200,'08/04/2025'),
+(103,116,600,'08/04/2025'),
+(401,114,50,'22/04/2025');
+
+INSERT INTO Restaurant (food, price, cuisine)
+VALUES ('Margherita Pizza', 250, 'Italian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Paneer Butter Masala', 300, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Sushi Platter', 450, 'Japanese');
+INSERT INTO Restaurant (food, price, cuisine)
+VALUES ('Tacos', 200, 'Mexican');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Kung Pao Chicken', 280, 'Chinese');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Dal-Fry + Jeera Rice', 180, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Butter Chicken', 320, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Palak Paneer', 280, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Paneer Tikka Roll', 200, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Salad', 280, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Soup', 150, 'Continental');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Curry', 250, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Grilled Chicken', 450, 'Continental');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Dal Fry', 50, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Jeera Rice', 150, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Dosa Sambhar', 150, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Idli Vada Chutney', 200, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Schezwan Noodles', 250, 'Chinese');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Chicken Momos(4)', 100, 'Chinese');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('7 Cheesy Pizza', 300, 'Italian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Extra Massive Chicken Burger', 300, 'Continental');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('French Fries', 50, 'French');
+INSERT INTO Restaurant (food, price, cuisine)
+VALUES ('Mutton Roganjosh', 200, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Chicken Platter', 350, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Bruce Lee Favourite Sizzler', 400, 'Chinese');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Tea', 30, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Coffee', 30,  'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Samosa', 150,  'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Lassi', 50,  'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Biryani', 250, 'Indian');
+INSERT INTO Restaurant (food, price,  cuisine)
+VALUES ('Coconut Fish curry', 69, 'Indian');
+
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (1, 4, 'Yes', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (2, 2, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (3, 6, 'Yes', 'No');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (4, 4, 'No', 'No');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (5, 2, 'Yes', 'No');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (101, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (103, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (201, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (204, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (301, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (302, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (303, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (304, 4, 'No', 'Yes');
+INSERT INTO Table_Info (TableNo, Capacity, InUseOrNot, ReservedOrNot)
+VALUES (501, 4, 'No', 'Yes');
+
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (1, 102, 'Palak Paneer', 1001, 2, 5001);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (2, 401, 'Butter Chicken', 1002, 1, 5002);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (3, 202, 'Paneer Butter Masala', 1003, 3, 5003);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (4, 104, 'Dal Fry', 1004, 2, 5004);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (5, 202, 'Jeera Rice', 1005, 2, 5005);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (101, 101, 'Paneer Tikka Roll', 1006, 2, 5006);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (1, 102, 'Extra Massive Chicken Burger', 1007, 2, 5001);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (103, 103, 'Salad', 1008, 1, 5007);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (4, 104, 'Curry', 1009, 3, 5004);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (201, 201, 'Schezwan Noodles', 1010, 2, 5008);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (3, 202, 'Biryani', 1011, 2, 5003);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (5, 205, 'Chicken Platter', 1012, 2, 5005);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (204, 204, 'French Fries', 1013, 2, 5009);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (301, 301, 'Butter Chicken', 1014, 1, 5010);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (302, 302, 'Idli Vada Chutney', 1015, 3, 5011);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (303, 303, 'Mutton Roganjosh', 1016, 2, 5012);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (304, 304, 'Bruce Lee Favourite Sizzler', 1017, 2, 5013);
+INSERT INTO Orders (Table_No, Roomno, FoodName, Order_ID, Qty, BillNumber)
+VALUES (501, 501, '7 Cheesy Pizza', 1018, 2, 5014);
+
+INSERT INTO Inventory (supplierID, RawMatName, capacity, stock, reorderlevel, "cost", BatchNo)
+VALUES
+
+(101, 'Carrot', 500, 100, 50, 30, 201),
+(101, 'Coconut', 500, 100, 50, 30, 202),
+(101, 'Potato', 500, 100, 50, 30, 203),
+(101, 'Spinach', 300, 150, 50, 25, 204),
+(101, 'Cabbage', 300, 150, 50, 25, 205),
+(101, 'Tomato', 600, 300, 150, 40, 206),
+(101, 'Garlic', 300, 150, 70, 15, 207),
+(101, 'Ginger', 200, 120, 50, 20, 208),
+(101, 'Onion', 700, 350, 150, 18, 209),
+(101, 'Bell Pepper', 450, 200, 100, 35, 210),
+
+(102, 'Lentils', 400, 200, 100, 50, 211),
+(102, 'Sugar', 400, 200, 100, 50, 212),
+(102, 'Rice', 1000, 500, 200, 25, 213),
+(102, 'Tea Leaves', 1000, 500, 200, 25, 214),
+(102, 'Coffee Beans', 1000, 500, 200, 25, 215),
+(102, 'Salt', 1000, 500, 200, 25, 216),
+(102, 'Chickpeas', 700, 350, 150, 45, 217),
+
+(103, 'Chicken Breast', 1000, 200, 100, 120, 218),
+(103, 'Chicken', 1000, 500, 150, 130, 219),
+(103, 'Fish', 1200, 400, 200, 140, 220),
+(103, 'Mutton', 800, 300, 150, 160, 221),
+
+(104, 'Paneer', 800, 250, 80, 90, 222),
+(104, 'Noodles', 800, 250, 80, 90, 223),
+(104, 'Milk', 800, 250, 80, 90, 224),
+(104, 'Curd', 800, 250, 80, 90, 225),
+(104, 'Cheese', 500, 250, 100, 110, 226),
+(104, 'Tofu', 600, 300, 100, 85, 227),
+(104, 'Rice Flour', 600, 300, 100, 85, 228),
+(104, 'Mushroom', 400, 200, 75, 60, 229),
+
+(106, 'Cumin', 200, 100, 40, 20, 230),
+(106, 'Turmeric', 150, 80, 30, 10, 231),
+(106, 'Black Pepper', 100, 40, 20, 25, 232);
+
+INSERT INTO Item_In (SupplierID, RawMaterialName, FOOD)
+VALUES
+  (101, 'Tomato', 'Margherita Pizza'),
+  (104, 'Cheese', 'Margherita Pizza'),
+  (101, 'Garlic', 'Margherita Pizza'),
+  
+  (104, 'Paneer', 'Paneer Butter Masala'),
+  (101, 'Tomato', 'Paneer Butter Masala'),
+  (106, 'Cumin', 'Paneer Butter Masala'),
+
+  (102, 'Rice', 'Sushi Platter'),
+  (103, 'Fish', 'Sushi Platter'),
+  (101, 'Ginger', 'Sushi Platter'),
+
+  (101, 'Tomato', 'Tacos'),
+  (101, 'Bell Pepper', 'Tacos'),
+  (103, 'Chicken', 'Tacos'),
+
+  (103, 'Chicken', 'Kung Pao Chicken'),
+  (101, 'Bell Pepper', 'Kung Pao Chicken'),
+  (101, 'Garlic', 'Kung Pao Chicken'),
+
+  (102, 'Lentils', 'Dal-Fry + Jeera Rice'),
+  (106, 'Cumin', 'Dal-Fry + Jeera Rice'),
+  (102, 'Rice', 'Dal-Fry + Jeera Rice'),
+
+  (103, 'Chicken', 'Butter Chicken'),
+  (101, 'Tomato', 'Butter Chicken'),
+  (101, 'Garlic', 'Butter Chicken'),
+
+  (104, 'Paneer', 'Palak Paneer'),
+  (101, 'Spinach', 'Palak Paneer'),
+  (101, 'Garlic', 'Palak Paneer'),
+
+  (104, 'Paneer', 'Paneer Tikka Roll'),
+  (101, 'Onion', 'Paneer Tikka Roll'),
+  (101, 'Ginger', 'Paneer Tikka Roll'),
+
+  (101, 'Carrot', 'Salad'),
+  (102, 'Chickpeas', 'Salad'),
+  (101, 'Onion', 'Salad'),
+
+  (101, 'Spinach', 'Soup'),
+  (101, 'Garlic', 'Soup'),
+  (101, 'Carrot', 'Soup'),
+
+  (106, 'Cumin', 'Curry'),
+  (106, 'Turmeric', 'Curry'),
+  (101, 'Onion', 'Curry'),
+
+  (103, 'Chicken Breast', 'Grilled Chicken'),
+  (101, 'Garlic', 'Grilled Chicken'),
+  (106, 'Black Pepper', 'Grilled Chicken'),
+
+  (102, 'Lentils', 'Dal Fry'),
+  (101, 'Ginger', 'Dal Fry'),
+
+  (102, 'Rice', 'Jeera Rice'),
+  (106, 'Cumin', 'Jeera Rice'),
+
+  (104, 'Rice Flour', 'Dosa Sambhar'),
+  (101, 'Onion', 'Dosa Sambhar'),
+  (102, 'Lentils', 'Dosa Sambhar'),
+
+  (102, 'Rice', 'Idli Vada Chutney'),
+  (102, 'Lentils', 'Idli Vada Chutney'),
+  (101, 'Coconut', 'Idli Vada Chutney'),
+
+  (104, 'Noodles', 'Schezwan Noodles'),
+  (101, 'Garlic', 'Schezwan Noodles'),
+  (101, 'Bell Pepper', 'Schezwan Noodles'),
+
+  (103, 'Chicken', 'Chicken Momos(4)'),
+  (101, 'Cabbage', 'Chicken Momos(4)'),
+  (101, 'Ginger', 'Chicken Momos(4)'),
+
+  (104, 'Cheese', '7 Cheesy Pizza'),
+  (101, 'Tomato', '7 Cheesy Pizza'),
+  (101, 'Garlic', '7 Cheesy Pizza'),
+
+  (103, 'Chicken', 'Extra Massive Chicken Burger'),
+  (104, 'Cheese', 'Extra Massive Chicken Burger'),
+  (101, 'Onion', 'Extra Massive Chicken Burger'),
+
+  (101, 'Potato', 'French Fries'),
+  (102, 'Salt', 'French Fries'),
+
+  (103, 'Mutton', 'Mutton Roganjosh'),
+  (101, 'Onion', 'Mutton Roganjosh'),
+  (106, 'Turmeric', 'Mutton Roganjosh'),
+
+  (103, 'Chicken', 'Chicken Platter'),
+  (101, 'Onion', 'Chicken Platter'),
+  (101, 'Ginger', 'Chicken Platter'),
+
+  (103, 'Chicken', 'Bruce Lee Favourite Sizzler'),
+  (101, 'Bell Pepper', 'Bruce Lee Favourite Sizzler'),
+  (101, 'Garlic', 'Bruce Lee Favourite Sizzler'),
+
+  (102, 'Tea Leaves', 'Tea'),
+  (101, 'Ginger', 'Tea'),
+
+  (102, 'Coffee Beans', 'Coffee'),
+  (104, 'Milk', 'Coffee'),
+
+  (101, 'Potato', 'Samosa'),
+  (106, 'Cumin', 'Samosa'),
+  (101, 'Onion', 'Samosa'),
+
+  (104, 'Curd', 'Lassi'),
+  (104, 'Milk', 'Lassi'),
+  (102, 'Sugar', 'Lassi'),
+
+  (102, 'Rice', 'Biryani'),
+  (103, 'Chicken', 'Biryani'),
+  (101, 'Onion', 'Biryani'),
+
+  (103, 'Fish', 'Coconut Fish curry'),
+  (101, 'Coconut', 'Coconut Fish curry'),
+  (106, 'Turmeric', 'Coconut Fish curry');
+
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Butter Chicken', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('French Fries', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Paneer Tikka Roll', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Salad', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Schezwan Noodles', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Idli Vada Chutney', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Mutton Roganjosh', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('Bruce Lee Favourite Sizzler', 116);
+INSERT INTO DishToBeDelivered (Food, DID)
+VALUES ('7 Cheesy Pizza', 116);
+
+INSERT INTO ComplaintAgainst (Rno, D_ID, Description)
+VALUES
+  (501, 117, 'Waited too long for dinner service in the restaurant.'),
+  (503, 111, 'Floor had dust even after cleaning.'),
+  (504, 116, 'Late night food delivery was cold.'),
+  (505, 115, 'Laundry came back with wrong clothes.'),
+  (102, 113, 'Spa session was noisy due to nearby construction.'),
+  (202, 114, 'Fan in the room made unusual noise.'),
+  (204, 112, 'Treadmill speed controls were malfunctioning.'),
+  (501, 113, 'No hot water available in spa shower.'),
+  (504, 114, 'AC was leaking near the wardrobe.'),
+  (303, 115, 'Laundry pickup was missed two days in a row.'),
+  (103, 116, 'Ordered food arrived with spillage in packaging.'),
+  (504, 113, 'Spa room was not clean and towels were damp.');
