@@ -1,0 +1,175 @@
+-- DDL Script :
+
+CREATE SCHEMA Resort_Management;
+SET search_path TO Resort_Management;
+
+CREATE TABLE Discounts (
+  roomtype VARCHAR(20),
+  offered INT,
+  startdate DATE,
+  enddate DATE,
+  PRIMARY KEY (roomtype)
+);
+
+CREATE TABLE Department (
+  did NUMERIC PRIMARY KEY,
+  dname VARCHAR(50),
+  managerID NUMERIC,
+  managerName VARCHAR(20),
+  sex VARCHAR(1),
+  mgr_start_date DATE
+);
+
+CREATE TABLE Rooms (
+  Roomno INT PRIMARY KEY,
+  
+  rate_night INT,
+  occupancy INT,
+  occupied INT,
+  Roomtype VARCHAR(20),
+  "floor" INT,
+  
+  FOREIGN KEY (Roomtype) REFERENCES Discounts(roomtype)
+);
+
+CREATE TABLE Resident (
+  RoomID INT PRIMARY KEY,
+  "Name" VARCHAR(50) NOT NULL,
+  aadharNo bigint UNIQUE,
+  PassPortID VARCHAR(20) UNIQUE,
+  PaymentID VARCHAR(20),
+  PhoneNumber BIGINT Unique,
+  PlaceOfResidence VARCHAR(60),
+  BookingDate DATE,
+  PaymentMethod VARCHAR(15),
+  CheckinDate DATE,
+  CheckoutDate DATE,
+  FOREIGN KEY (RoomID) REFERENCES Rooms(Roomno)
+);
+
+CREATE TABLE EventDetails (
+  EventName VARCHAR(50) PRIMARY KEY,
+  Date DATE NOT NULL,
+  StartTime TIME NOT NULL,
+  EndTime TIME NOT NULL,
+  Venue CHAR(50) NOT NULL
+);
+
+CREATE TABLE Registered_In (
+  ROOMID INT,
+  Event_Name VARCHAR(50),
+  PRIMARY KEY (ROOMID, Event_Name),
+  FOREIGN KEY (ROOMID) REFERENCES Resident(RoomID),
+  FOREIGN KEY (Event_Name) REFERENCES EventDetails(EventName)
+);
+
+CREATE TABLE Employee (
+  EmpID INT PRIMARY KEY,
+  EName VARCHAR(50) NOT NULL,
+  Occupied VARCHAR(3),
+  SuperID INT,
+  Did INT,
+  bdate DATE,
+  sex CHAR(1),
+  salary INT,
+  Time_work_allotted TIME,
+  FOREIGN KEY (Did) REFERENCES Department(did)
+);
+
+CREATE TABLE Work_Desc (
+  emp_id INT,
+  task VARCHAR(255),
+  hours_worked INT,
+  PRIMARY KEY (emp_id, task),
+  FOREIGN KEY (emp_id) REFERENCES Employee(EmpId)
+);
+
+CREATE TABLE WorkingDate(
+ 
+  Dates DATE,
+  PRIMARY KEY (Dates)
+ 
+);
+
+CREATE TABLE new_Attends(
+     Empid INT,
+     Date DATE,
+     PorA BOOL,
+     
+     PRIMARY KEY (Empid,Date),
+     FOREIGN KEY (Empid) REFERENCES Employee(Empid),
+     FOREIGN KEY (Date) REFERENCES WorkingDate (Dates)
+);
+
+CREATE TABLE Service_Requested (
+  roomno INT,
+  Dept_ID INT,
+  Amount_Charge INT,
+ -- DeptName VARCHAR(30),//Needs to be removed
+  OnDate DATE,
+  PRIMARY KEY (roomno, Dept_ID, OnDate),
+  FOREIGN KEY (Dept_ID) REFERENCES Department(did)
+);
+
+CREATE TABLE Restaurant (
+  food VARCHAR(50) PRIMARY KEY,
+  price INT,
+  cuisine VARCHAR(50)
+);
+
+CREATE TABLE Table_Info (
+  TableNo INT PRIMARY KEY,
+  Capacity INT,
+  InUseOrNot VARCHAR(3),
+  ReservedOrNot VARCHAR(3)
+);
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  table_no INT,
+  Roomno INT,
+  FoodName VARCHAR(50),
+  DishID INT,
+  Qty INT, 
+  BillNumber Bigint,
+  FOREIGN KEY (Roomno) REFERENCES Resident(RoomID),
+  FOREIGN KEY (table_no) REFERENCES Table_Info(tableno),
+  FOREIGN KEY (FoodName) REFERENCES Restaurant(food)
+);
+
+CREATE TABLE Inventory (
+  supplierID INT,
+  RawMatName VARCHAR(50),
+  capacity INT,
+  stock INT,
+  reorderlevel INT,
+  "cost" INT,
+  BatchNo INT,
+  PRIMARY KEY (SupplierID, RawMatName)
+);
+
+CREATE TABLE Item_In (
+  SupplierID INT,
+  RawMaterialName VARCHAR(100),
+  FOOD VARCHAR(50),
+  PRIMARY KEY (SupplierID, RawMaterialName, FOOD),
+  FOREIGN KEY (SupplierID, RawMaterialName) REFERENCES Inventory(SupplierID, RawMatName),
+  FOREIGN KEY (FOOD) REFERENCES Restaurant(food)
+);
+
+CREATE TABLE DishToBeDelivered(
+  Food VARCHAR(50),
+  DID INT,
+  PRIMARY KEY (Food, DID),
+  FOREIGN KEY (Food) REFERENCES Restaurant(food),
+  FOREIGN KEY (DID) REFERENCES Department(did)
+);
+
+CREATE TABLE ComplaintAgainst(
+  Rno INT ,
+  D_ID INT ,
+  Description VARCHAR(200),
+  PRIMARY KEY (Rno, D_ID),
+FOREIGN KEY (Rno) REFERENCES Resident(RoomID),
+FOREIGN KEY (D_ID) REFERENCES Department(did)
+);
