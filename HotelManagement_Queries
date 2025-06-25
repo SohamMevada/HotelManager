@@ -1,0 +1,131 @@
+--query1 which rooms are empty 
+select roomno from rooms
+except 
+select roomid from resident;
+
+--query2 total no of residents
+select sum(occupied) as total_resident from rooms;
+
+--query3 total services requested by a roomno
+ select roomno,count(dept_id) as no_of_dept_services, sum(amount_charge) as charge_of_service from service_requested
+ group by roomno;
+
+ --query3.1 what are the complaints against spa 
+    select rno,description from complaintagainst
+    where d_id = 113; 
+   
+ --query4 no of people attending a specific event
+  SELECT registered_in.event_name, sum(rooms.occupied) AS attendees FROM 
+  rooms JOIN registered_in ON 
+  rooms.roomno = registered_in.roomid
+  GROUP BY registered_in.event_name
+  HAVING event_name = 'Sunset Yoga Session';
+
+  --query 4.1 which rooms are attending a specific event
+      select roomid,event_name from registered_in 
+	  where event_name = 'Poolside Movie Night'; 
+
+ --query5 no of residents entering on a specific date
+   SELECT sum(occupied) FROM resident JOIN 
+   rooms ON roomno = roomid
+   WHERE checkindate = '2025-04-06';
+
+ --query6 rate of a particular room per night after the discount
+   SELECT roomno,(rate_night-(offered*rate_night/100)) as earned FROM rooms JOIN discounts ON
+   rooms.roomtype = discounts.roomtype ;
+
+ --query7 employee present on  the 5 day span of time 
+     SELECT employee.empid,count(pora) FROM Employee JOIN new_attends ON 
+     employee.empid = new_attends.empid
+	 where new_attends.pora = true
+	 group by employee.empid;
+
+ --query8 count of complaint against a department
+    SELECT dname,count(d_id) from department join
+	complaintagainst on d_id = did
+	group by dname;
+
+--query9 no of employees per department
+   SELECT department.did,count(empid) as employee_count FROM department join employee 
+   on employee.did = department.did 
+   group by department.did;
+
+--query10 attendance of employees per department
+   SELECT r.did,sum(c) from 
+     (SELECT employee.did,employee.empid,count(pora) as c FROM Employee JOIN new_attends ON 
+     employee.empid = new_attends.empid
+	 where new_attends.pora = true
+	 group by employee.empid) as r 
+	 group by r.did;
+
+
+ --query11  department would know which room has to be delivered what food
+ select department.did,orders.roomno, orders.foodname from department join 
+   dishtobedelivered on dishtobedelivered.did = department.did join 
+   restaurant on restaurant.food= dishtobedelivered.food join 
+   orders on foodname = restaurant.food;
+
+ --query12 rawmaterial in a specific dish 
+   select rawmaterialname , food from item_in
+   where food = 'Palak Paneer';
+
+   --query12.1 a particular raw material is used in which dishes
+     select food from item_in 
+	  where rawmaterialname = 'Paneer';
+
+  
+ --query13 rooms that have reserved the table 
+   select distinct roomno from orders join table_info on 
+	orders.table_no = table_info.tableno
+	 where reservedornot = 'Yes' and orders.table_no!=orders.roomno;
+
+ --query14 To find out which room's got affected by a bad raw material
+  select orders.roomno from (item_in natural join restaurant as r ) join orders on orders.foodname=r.food
+  where rawmaterialname='Paneer';
+  
+  -- query15 Money earnt from a restaurant in a span of 5 day 
+  select sum(price*qty) from restaurant 
+  join orders on restaurant.food=orders.foodname;
+  
+  --query16 to find out which raw material is below reordering level
+  select * from inventory where stock < reorderlevel;
+  
+  -- query17 To findout which rawmaterial is used the in how many dishes in restaurant
+  select rawmaterialname,count(food) from item_in group by rawmaterialname;
+  
+ 
+  --query18 To find out revenue on a particular room for delivering a specific food 
+  select orders.roomno,orders.foodname,amount_charge+price*qty as revenue from restaurant join
+  orders on restaurant.food=orders.foodname join
+  (select r.roomno,foodname,amount_charge from service_requested join (select roomno, foodname from Table_info join orders on table_info.tableno=orders.table_no where orders.table_no=orders.roomno) as r on r.roomno=service_requested.roomno and dept_id=116) as r1 
+  on r1.foodname=restaurant.food;
+
+  --query 19 top 5 most ordered dishes
+  SELECT * FROM
+  (SELECT FoodName, SUM(Qty) AS total_qty
+  FROM Orders
+  GROUP BY FoodName) as r1
+  ORDER BY r1.total_qty DESC 
+  LIMIT 5;
+    
+	
+  --query20 rooms that are under utilised
+   select roomno,occupancy,occupied from 
+   rooms 
+   where occupancy > occupied;
+
+   --query21
+   --Guests Who Ordered highest price dish and how many no of times
+  select res."Name",o.foodname,r.price, count(*) as times_ordered from orders o
+  join resident res on o.roomno = res.roomid
+  join restaurant r on o.foodname = r.food
+  group by res."Name" , o.foodname,r.price
+  order by r.price desc
+  LIMIT 5;
+
+  
+  --query22 employees that are not occupied and have to deliver food
+    select empid, ename from employee 
+	 where occupied = 'No' and did = 116;
+
+   
